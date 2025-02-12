@@ -4,7 +4,7 @@ import styles from './NewProduto.module.css';
 import { ToastContainer, toast } from "react-toastify";
 import { api } from "../lib/axios";
 
-export function ModalProduto({ onClose, categorias, getProdutos, produto }) {
+export function ModalProduto({ onClose, categorias, getProdutos, produto, onSuccess }) {
     const [formData, setFormData] = useState({
         numeracao: produto.numeracao,
         nome: produto.nome,
@@ -80,7 +80,8 @@ export function ModalProduto({ onClose, categorias, getProdutos, produto }) {
         try {
             await api.delete(`/produto/${produto.id}`);
             getProdutos(); // Atualiza a lista de produtos
-            onClose("Produto excluído com sucesso!"); // Fecha o modal
+            onSuccess("Produto excluído com sucesso!")
+            onClose(); // Fecha o modal
         } catch (error) {
             toast.error("Erro ao excluir o produto. Tente novamente.");
             console.error("Erro ao excluir produto:", error);
@@ -214,7 +215,6 @@ export function ModalProduto({ onClose, categorias, getProdutos, produto }) {
                     </div>
 
                 </form>
-                <ToastContainer />
             </div>
            
         </div>

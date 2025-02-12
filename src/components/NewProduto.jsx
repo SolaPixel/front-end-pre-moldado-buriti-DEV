@@ -47,8 +47,8 @@ export function NewProduto({ onClose, categorias, getProdutos }) {
                 valorAtacado: "",
                 valorVarejo: ""
             }); // Limpa o input
-            toast.success("produto adicionada com sucesso!");
-            getProdutos()
+            
+            toast.success("produto adicionado com sucesso!");
 
         } catch (error) {
             if (error.response && error.response.status === 409) {
@@ -62,13 +62,17 @@ export function NewProduto({ onClose, categorias, getProdutos }) {
 
     }
 
+    const handleClose = ()=>{
+        getProdutos(); // Atualiza a lista de produtos
+        onClose()
+    }
 
 
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
                 <form onSubmit={handleCreateProduto} >
-                    <button onClick={onClose} className={styles.closeButton}>X</button>
+                    <button onClick={handleClose} className={styles.closeButton}>X</button>
 
                     <div className={styles.formRow}>
                         <div className={styles.smalldiv}>

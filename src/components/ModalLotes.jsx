@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './ModalLotes.module.css';
 import { PencilLine, PlusCircle, Trash } from 'phosphor-react';
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { api } from '../lib/axios';
 
@@ -233,7 +233,6 @@ export function ModalLotes({ onClose, produto, getProdutos }) {
                         <p>Você ainda não cadastrou nenhum lote</p>
                     )}
                 </div>
-                <ToastContainer />
             </div>
         </div>
     );

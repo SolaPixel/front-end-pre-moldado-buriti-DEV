@@ -150,8 +150,6 @@ export function ModalCategorias({ onClose, getCategorias, categorias, getProduto
                         <p>Você ainda não cadastrou nenhuma categoria</p>
                     )}
                 </div>
-
-                <ToastContainer />
             </div>
         </div>
     );

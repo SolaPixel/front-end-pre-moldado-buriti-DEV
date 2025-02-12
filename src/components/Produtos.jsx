@@ -7,13 +7,14 @@ import { api } from '../lib/axios.js';
 import { NewProduto } from './NewProduto.jsx';
 import { ModalProduto } from './modalProduto.jsx';
 import { ModalLotes } from './ModalLotes.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 export function Produtos({ produtos, getProdutos }) {
 
     const [searchTerm, setSearchTerm] = useState('');
 
     const [categorias, setCategorias] = useState([]);
-
+    const [filterCategoria, setFilterCategoria] = useState("Todos"); // Corrigido para "Todos"
 
 
     async function getCategorias() {
@@ -34,9 +35,11 @@ export function Produtos({ produtos, getProdutos }) {
     const [showModalProduto, setShowModalProduto] = useState(false);
     const [showModalLotes, setShowModalLotes] = useState(false);
 
+    //produto selecionado a fim de ser enviado à respectivos modais
     const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 
 
+    //gerencia diretamente visibilidade dos modais
     const openCategorias = () => {
         setShowModalCategoria(true)
 
@@ -70,6 +73,7 @@ export function Produtos({ produtos, getProdutos }) {
 
     const closeModalProduto = () => {
         setShowModalProduto(false)
+
     }
 
     const closeModalLotes = () => {
@@ -77,6 +81,9 @@ export function Produtos({ produtos, getProdutos }) {
     }
 
 
+    const handleSuccessMessage = (message) => {
+        toast.success(message);
+    };
 
 
     // Filtrar produtos pelo nome de acordo com o termo de pesquisa
@@ -85,6 +92,16 @@ export function Produtos({ produtos, getProdutos }) {
     };
 
 
+    //recebe os produtos e retorna os que se adequam a condição
+    const filtrarProdutosPorCategoria = (produto) => {
+        if (filterCategoria === "Todos") {
+            return true; // Retorna todos os produtos se a categoria for "Todos"
+        }
+        return produto.categoriaId === filterCategoria;
+    };
+    
+
+    
 
 
     return (
@@ -108,9 +125,21 @@ export function Produtos({ produtos, getProdutos }) {
 
                     <div className={styles.filterWrapper}>
                         <span>Filtrar</span>
-
-
+                        <select
+                        value={filterCategoria}
+                        onChange={(e) => setFilterCategoria(e.target.value)}
+                        >
+                            <option value="Todos">Todos</option>
+                            {categorias.length > 0 &&
+                                categorias.map((item) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.nome}
+                                    </option>
+                                ))
+                            }
+                        </select>
                     </div>
+
 
                     <div>
                         <button onClick={openCategorias} className={styles.exportButton}>
@@ -156,7 +185,8 @@ export function Produtos({ produtos, getProdutos }) {
                 </thead>
                 <tbody>
                     {produtos
-                        .filter(filtrarProdutosPorNome)
+                        .filter(filtrarProdutosPorCategoria) //instanciando a função de filtrar por categoria
+                        .filter(filtrarProdutosPorNome) // instanciando a função de filtrar por nome
                         .map((item) => (
                             <tr key={item.id}>
                                 <td>
@@ -169,6 +199,7 @@ export function Produtos({ produtos, getProdutos }) {
                                             onClose={closeModalProduto}
                                             categorias={categorias}
                                             getProdutos={getProdutos}
+                                            onSuccess={handleSuccessMessage}
                                         />
                                     )}
 
@@ -185,18 +216,19 @@ export function Produtos({ produtos, getProdutos }) {
                                     </button>
                                     {showModalLotes && (
                                         <ModalLotes
-                                        produto={produtoSelecionado}
-                                        onClose={closeModalLotes}
-                                        getProdutos={getProdutos}
+                                            produto={produtoSelecionado}
+                                            onClose={closeModalLotes}
+                                            getProdutos={getProdutos}
                                         />
                                     )}
                                 </td>
-
 
                             </tr>
                         ))}
                 </tbody>
             </table>
+
+            <ToastContainer/>
         </div>
     );
 }
