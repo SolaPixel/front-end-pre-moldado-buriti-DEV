@@ -18,6 +18,8 @@
   --black: #1b1b1b;
   --gray: #cdcdcd;
   --gray-light: #f1f1f1;
+  --red: #ff1d1d;
+  --green: #0eff66;
 }
 
 :focus {
@@ -49,4 +51,9 @@ button {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 1rem;
+}
+
+.line {
+  flex: 1;
+  border-bottom: 2px solid var(--gray-100);
 }

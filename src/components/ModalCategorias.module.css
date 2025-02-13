@@ -9,24 +9,39 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(2px);
 }
 
 .modal {
   max-height: calc(100vh * 0.9);
   min-height: calc(100vh * 0.9);
   background: var(--bg-light-main);
-  padding: 2rem;
+  padding: 1.25rem;
   border-radius: 12px;
   width: calc(100% * 0.7);
   position: relative;
   overflow-y: auto;
+  border: 2px solid var(--gray-100);
 }
 
-.formRow {
+.modal h1 {
+  margin-bottom: 1rem;
+  color: var(--black);
+}
+
+.line {
+  width: 100%;
+  border-bottom: 3px solid var(--gray-100);
+  margin: 1.25rem 0px;
+}
+
+.inputRow {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  gap: 10px;
+  /* gap: 0.6rem; */
+  /* margin-bottom: 0.5rem; */
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -34,13 +49,8 @@
   }
 }
 
-.modal h1 {
-  margin-bottom: 1rem;
-  color: var(--gray-900);
-}
-
-.formGroup {
-  flex: 1 1 0;
+.inputs {
+  flex: 1;
   display: flex;
   flex-direction: column;
 
@@ -52,22 +62,34 @@
   }
 }
 
-.formRow button {
+.inputRow button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   padding: 8px 12px;
   border: none;
-  border-radius: 5px; /* Suaviza as bordas */
+  border-radius: 8px; /* Suaviza as bordas */
   background: transparent;
-  color: #333; /* Cor do ícone */
+  color: var(--black); /* Cor do ícone */
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Animação suave */
+  transition: background-color 0.2s ease; /* Animação suave */
+  gap: 4px;
 }
 
-.formRow button:hover {
-  background-color: #d0d0d0; /* Cor ao passar o mouse */
+.mainBtn:hover {
+  background-color: var(--main);
+  color: var(--white);
+}
+
+.saveBtn:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.deleteBtn:hover {
+  background-color: var(--red);
+  color: var(--white);
 }
 
 .closeButton {
@@ -84,15 +106,6 @@
 
 .closeButton:hover {
   color: #333;
-}
-
-.overlay h2 {
-  color: var(--gray-900);
-  font-size: 1.5rem;
-
-  text-align: center;
-  border-top: 1px solid var(--gray-400);
-  padding: 1rem;
 }
 
 .overlay form {
@@ -128,7 +141,7 @@
 }
 
 .activeTab {
-  background-color: var(--brown-500);
+  background-color: var(--main);
   color: white;
   cursor: default;
 }
@@ -144,9 +157,9 @@
 select {
   font-size: 1rem;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--gray-100);
   border-radius: 6px;
-  background-color: #fafafa;
+  background: transparent;
   transition: border-color 0.2s ease;
   width: 100%;
   height: 3rem;
@@ -154,16 +167,16 @@ select {
 
 .overlay input:focus,
 select:focus {
-  border-color: #007bff;
+  border-color: #268fff;
   outline: none;
 }
 
 .overlay select {
-  color: #333;
+  color: var(--black);
 }
 
 .overlay p {
-  color: #e74c3c;
+  color: var(--red);
   font-size: 0.875rem;
   margin: 5px 0 0;
 }
@@ -178,7 +191,7 @@ select:focus {
 .checkboxContainer label {
   margin-left: 8px;
   font-size: 14px;
-  color: #333;
+  color: var(--black);
   cursor: pointer;
 }
 
@@ -188,7 +201,7 @@ select:focus {
   height: 18px;
   -webkit-appearance: none;
   appearance: none;
-  border: 2px solid #007bff;
+  border: 2px solid #268fff;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
@@ -196,8 +209,8 @@ select:focus {
 }
 
 .checkboxContainer input:checked {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #268fff;
+  border-color: #268fff;
 }
 
 .formRow span {
@@ -231,10 +244,10 @@ select:focus {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--bg-light-main);
-  background: var(--brown-800);
+  background: var(--main);
   border: none;
   border-radius: 6px;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
 }
 
 .overlay button[type="submit"]:hover {
@@ -261,4 +274,10 @@ select:focus {
 .listContainer {
   border-top: 1px solid var(--gray-100);
   padding: 1rem 0;
+}
+
+.categorys {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

@@ -54,17 +54,19 @@
   /* margin: 0 1rem 0; */
   border: none;
   border-radius: 8px;
-  /* cursor: pointer; */
+  cursor: pointer;
   /* font-size: 1rem; */
   transition: background-color 0.1s;
 }
 
+.buttonLots,
 .buttonFilter {
   display: inline-block;
   position: relative;
   background: transparent;
   color: var(--main);
   row-gap: 100px;
+  cursor: pointer;
 }
 
 /* .buttonFilter span {
@@ -78,7 +80,7 @@
   width: 100%;
   height: 100%;
   opacity: 0; /* Deixa o select invisível */
-  cursor: pointer; /* Mantém o cursor como pointer */
+  cursor: pointer;
 }
 
 .buttonFull:hover {
@@ -124,19 +126,13 @@ table {
   border-collapse: collapse;
 }
 
-/* estilo tabela */
-/* th,
+th,
 td {
   border: 2px solid var(--gray-100);
 }
 
 th {
   background: var(--gray-100);
-} */
-
-th,
-td {
-  border-bottom: 2px solid var(--gray-100);
 }
 
 .produtos th {
@@ -171,6 +167,18 @@ td {
       display: none;
     }
   }
+}
+
+.clickable {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  transition: border 0.2s ease-in-out;
+  border: 2px solid var(--gray-100);
+}
+
+.clickable:hover {
+  border-color: var(--main);
 }
 
 .situation {

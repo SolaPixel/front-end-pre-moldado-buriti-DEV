@@ -187,8 +187,30 @@ export function Produtos({ produtos, getProdutos }) {
                 <td>{item.unidadeMedida}</td>
                 <td>{item.valorVarejo}</td>
                 <td>{item.valorAtacado}</td>
-                <td>
-                  <button onClick={() => openLotes(item)}>
+
+                {/* teste */}
+                <td
+                  className={styles.clickable}
+                  onClick={() => openLotes(item)}
+                >
+                  {item.quantEstoque}
+                </td>
+
+                {showModalLotes && (
+                  <ModalLotes
+                    produto={produtoSelecionado}
+                    onClose={closeModalLotes}
+                    getProdutos={getProdutos}
+                  />
+                )}
+                {/* teste */}
+
+                {/* original */}
+                {/* <td>
+                  <button
+                    className={styles.buttonLots}
+                    onClick={() => openLotes(item)}
+                  >
                     {item.quantEstoque}
                   </button>
                   {showModalLotes && (
@@ -198,7 +220,8 @@ export function Produtos({ produtos, getProdutos }) {
                       getProdutos={getProdutos}
                     />
                   )}
-                </td>
+                </td> */}
+                {/* original */}
               </tr>
             ))}
         </tbody>

@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(2px);
 }
 
 .modal {
@@ -20,6 +21,7 @@
   width: calc(100% * 0.7);
   position: relative;
   overflow-y: auto;
+  border: 2px solid var(--gray-100);
 }
 
 .formRow {
@@ -201,7 +203,7 @@ select:focus {
   border-radius: 5px;
   /* Suaviza as bordas */
   background: transparent;
-  color: #333;
+  color: var(--main);
   /* Cor do ícone */
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -209,7 +211,7 @@ select:focus {
 }
 
 .formRow button:hover {
-  background-color: #d0d0d0;
+  background-color: var(--white);
   /* Cor ao passar o mouse */
 }
 
@@ -235,8 +237,8 @@ select:focus {
   padding: 0.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #fff;
-  background: var(--brown-800);
+  color: var(--white);
+  background: var(--main);
   border: none;
   border-radius: 6px;
   transition: background-color 0.3s;
@@ -244,8 +246,8 @@ select:focus {
 
 .overlay button[type="submit"]:hover {
   background-color: var(--bg-light-main);
-  color: var(--brown-800);
-  border: 1px solid var(--brown-800);
+  color: var(--main);
+  box-shadow: inset 0 0 0 1.5px var(--main);
 }
 
 .smalldiv {
