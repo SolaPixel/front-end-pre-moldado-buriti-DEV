@@ -1,126 +1,119 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal {
-    max-height: calc(100vh * 0.90);
-    min-height: calc(100vh * 0.90);
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
-    width: calc(100% * 0.7);
-    position: relative;
-    overflow-y: auto;
-    
+  max-height: calc(100vh * 0.9);
+  min-height: calc(100vh * 0.9);
+  background: var(--bg-light-main);
+  padding: 2rem;
+  border-radius: 12px;
+  width: calc(100% * 0.7);
+  position: relative;
+  overflow-y: auto;
 }
 
 .formRow {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.6rem;
-    
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
 
-
-    @media (max-width: 700px) {
-        flex-direction: column;
-        margin-bottom: 1rem;
-    }
+  @media (max-width: 700px) {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
 }
 
 .formGroup {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-    
-    justify-content: center;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
 
+  justify-content: center;
 
-    &:not(:last-child) {
-        @media (max-width: 600px) {
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
+  &:not(:last-child) {
+    @media (max-width: 600px) {
+      margin-right: 0;
+      margin-bottom: 1rem;
     }
+  }
 }
 
-
 .closeButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    border: none;
-    background: none;
-    font-size: 20px;
-    color: #888;
-    cursor: pointer;
-    transition: color 0.2s ease;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .closeButton:hover {
-    color: #333;
+  color: #333;
 }
 
 .overlay h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1.4rem;
-    text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
+  text-align: center;
 }
 
 .overlay form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
 .tabHeader {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.4rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.4rem;
 }
 
 .tabButton {
-    background-color: #f0f0f0;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px 5px 0 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 500;
-    font-size: 16px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px 5px 0 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .tabButton:not(:last-child) {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .tabButton:hover {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .activeTab {
-    background-color: var(--brown-500);
-    color: white;
-    cursor: default;
+  background-color: var(--brown-500);
+  color: white;
+  cursor: default;
 }
 
-
-
 .overlay label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--gray-900);
-    margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-900);
+  margin-bottom: 8px;
 }
 
 .overlay input[type="text"],
@@ -129,219 +122,194 @@ input[type="date"],
 input[type="tel"],
 input[type="number"],
 select {
-    font-size: 1rem;
-    padding: 0.7rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #fafafa;
-    transition: border-color 0.2s ease;
-    width: 100%;
-    box-sizing: border-box;
-    height: 3rem;
-    
+  font-size: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  height: 3rem;
 }
 
 .overlay input:focus,
 select:focus {
-    border-color: #007bff;
-    outline: none;
+  border-color: #007bff;
+  outline: none;
 }
-
-
-
-
 
 .overlay p {
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin: 5px 0 0;
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin: 5px 0 0;
 }
-
-
 
 .checkboxContainer {
-    display: flex;
-    
-    padding-top: 1rem;
-    margin: 1rem 0 0;
-    gap: 0.4rem;
+  display: flex;
 
+  padding-top: 1rem;
+  margin: 1rem 0 0;
+  gap: 0.4rem;
 }
 
-.border{
-    border-top: 1px solid var(--gray-900);
-    margin-top: 0.5rem;
+.border {
+  border-top: 1px solid var(--gray-900);
+  margin-top: 0.5rem;
 }
 
 .checkboxContainer h2 {
-
-    color: #333;
-    cursor: pointer;
-    font-size: 1.7rem;
+  color: #333;
+  cursor: pointer;
+  font-size: 1.7rem;
 }
 
-
-
-
 .checkboxContainer input {
-    width: 1.2rem;
-    height: 1.2rem;
-    appearance: none;
-    border: 2px solid black;
-    border-radius: 20%;
-    margin-top: 0.3rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  appearance: none;
+  border: 2px solid black;
+  border-radius: 20%;
+  margin-top: 0.3rem;
 
-
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .checkboxContainer input:checked {
-    background-color: var(--brown-500);
-    border-color: var(--brown-500);
+  background-color: var(--brown-500);
+  border-color: var(--brown-500);
 }
 
 .formRow span {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0;
-    height: 1px;
-    /* Ajuste a espessura */
-    background-color: #e0e0e0;
-    /* Cor desejada */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0;
+  height: 1px;
+  /* Ajuste a espessura */
+  background-color: #e0e0e0;
+  /* Cor desejada */
 }
 
 .formRow button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    /* Suaviza as bordas */
-    background: transparent;
-    color: #333;
-    /* Cor do ícone */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    /* Animação suave */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  /* Suaviza as bordas */
+  background: transparent;
+  color: #333;
+  /* Cor do ícone */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* Animação suave */
 }
 
 .formRow button:hover {
-    background-color: #d0d0d0;
-    /* Cor ao passar o mouse */
+  background-color: #d0d0d0;
+  /* Cor ao passar o mouse */
 }
 
-
-
-
 .overlay section {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 1rem;
-    margin-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 .overlay section label {
-    font-weight: 500;
-    color: #444;
+  font-weight: 500;
+  color: #444;
 }
 
 .buttonContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
 }
 
 .overlay button[type="submit"] {
-    width: 20rem;
-    padding: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    background: var(--brown-800);
-    border: none;
-    border-radius: 6px;
-    transition: background-color 0.3s;
+  width: 20rem;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--brown-800);
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
 }
 
 .overlay button[type="submit"]:hover {
-    background-color: var(--white);
-    color: var(--brown-800);
-    border: 1px solid var(--brown-800);
+  background-color: var(--bg-light-main);
+  color: var(--brown-800);
+  border: 1px solid var(--brown-800);
 }
 
 .smalldiv {
-    flex: 0 0 0%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 0 0 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-
-    &:not(:last-child) {
-        @media (max-width: 600px) {
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
+  &:not(:last-child) {
+    @media (max-width: 600px) {
+      margin-right: 0;
+      margin-bottom: 1rem;
     }
+  }
 }
 
 h4 {
-    margin: 1rem 0rem;
+  margin: 1rem 0rem;
 }
 
 .compettionContainer {
-    border-top: 1px solid var(--gray-100);
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-
+  border-top: 1px solid var(--gray-100);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .compettionContainer p {
-    margin-bottom: 0.7rem;
-    color: black;
-    font-size: 15px;
-
-
+  margin-bottom: 0.7rem;
+  color: black;
+  font-size: 15px;
 }
 
-
 .previewContainer {
-    width: 6rem;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .imagePreview {
-    width: 6rem;
-    height: 6rem;
-    object-fit: cover;
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
 }
 
-
 .uploadLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid var(--brown-500);
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid var(--brown-500);
 }
 
 .uploadLabel:hover {
-    background: var(--gray-900); /* Cor evidenciada */
-    opacity: 0.5; /* Leve transparência */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Realce adicional */
-    transition: all 0.3s ease; /* Suavização da transição */
+  background: var(--gray-900); /* Cor evidenciada */
+  opacity: 0.5; /* Leve transparência */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Realce adicional */
+  transition: all 0.3s ease; /* Suavização da transição */
 }
 
-
-
-.hiddenInput{
-    display: none;
+.hiddenInput {
+  display: none;
 }
