@@ -9,7 +9,7 @@ import { toDate } from "date-fns";
 export function ModalLots({ onClose, produto, getProdutos }) {
   const [lotes, setLotes] = useState([]);
 
-  console.log(lotes)
+  const [loading, setLoading] = useState(true);
 
   //requisição para api buscar produtos
   async function getLotes() {
@@ -19,7 +19,9 @@ export function ModalLots({ onClose, produto, getProdutos }) {
   }
 
   useEffect(() => {
-    getLotes();
+    getLotes().finally(() => {
+      setLoading(false);
+    });
   }, []);
 
   const [lote, setLote] = useState({
@@ -305,6 +307,8 @@ export function ModalLots({ onClose, produto, getProdutos }) {
                 </button>
               </div>
             ))
+          ) : loading ? (
+            <p>carregando...</p>
           ) : (
             <p>Você ainda não cadastrou nenhum lote</p>
           )}
