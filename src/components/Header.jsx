@@ -10,11 +10,11 @@ export function Header() {
         <h3>PRÉ MOLDADO BURITI</h3>
       </div>
       {/* navegação */}
-      <div className={styles.navigate}>
+      {/* <div className={styles.navigate}>
         <button>Home</button>
         <button>Orçamentos</button>
         <button>Clientes</button>
-      </div>
+      </div> */}
       {/* adicionar função de navegação de paginas */}
     </header>
   );

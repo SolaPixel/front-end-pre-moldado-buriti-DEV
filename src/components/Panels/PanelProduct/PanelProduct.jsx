@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { DotsThreeVertical, MagnifyingGlass } from "phosphor-react";
 
-import styles from "./Produtos.module.css";
-import { ModalCategorias } from "./ModalCategorias.jsx";
-import { api } from "../lib/axios.js";
-import { NewProduto } from "./NewProduto.jsx";
-import { ModalProduto } from "./modalProduto.jsx";
-import { ModalLotes } from "./ModalLotes.jsx";
+import styles from "./PanelProduct.module.css";
+import { api } from "../../../lib/axios.js";
+import { ModalAddProduct } from "../../Modals/ModalAddProduct/ModalAddProduct.jsx";
 import { ToastContainer, toast } from "react-toastify";
+import { ModalCategory } from "../../Modals/ModalCategory/ModalCategory.jsx";
+import { ModalLots } from "../../Modals/ModalLots/ModalLots.jsx";
+import { ModalProduct } from "../../Modals/ModalProduct/ModalProduct.jsx";
 
-export function Produtos({ produtos, getProdutos }) {
+export function PanelProduct({ produtos, getProdutos }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [categorias, setCategorias] = useState([]);
@@ -28,9 +28,9 @@ export function Produtos({ produtos, getProdutos }) {
 
   //estados que gerenciam visibilidade de modais
   const [showModalCategoria, setShowModalCategoria] = useState(false);
-  const [showModalNewProduto, setShowModalNewProduto] = useState(false);
-  const [showModalProduto, setShowModalProduto] = useState(false);
-  const [showModalLotes, setShowModalLotes] = useState(false);
+  const [showModalAddProduct, setShowModalAddProduct] = useState(false);
+  const [showModalProduct, setShowModalProduct] = useState(false);
+  const [showModalLots, setShowModalLots] = useState(false);
 
   //produto selecionado a fim de ser enviado à respectivos modais
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
@@ -40,34 +40,34 @@ export function Produtos({ produtos, getProdutos }) {
     setShowModalCategoria(true);
   };
 
-  const openNewProduto = () => {
-    setShowModalNewProduto(true);
+  const openModalAddProduct = () => {
+    setShowModalAddProduct(true);
   };
 
   const openProduto = (produto) => {
     setProdutoSelecionado(produto);
-    setShowModalProduto(true);
+    setShowModalProduct(true);
   };
 
   const openLotes = (produto) => {
     setProdutoSelecionado(produto);
-    setShowModalLotes(true);
+    setShowModalLots(true);
   };
 
   const closeModalCategoria = () => {
     setShowModalCategoria(false);
   };
 
-  const closeModalNewProduto = () => {
-    setShowModalNewProduto(false);
+  const closeModalAddProduct = () => {
+    setShowModalAddProduct(false);
   };
 
-  const closeModalProduto = () => {
-    setShowModalProduto(false);
+  const closeModalProduct = () => {
+    setShowModalProduct(false);
   };
 
-  const closeModalLotes = () => {
-    setShowModalLotes(false);
+  const closeModalLots = () => {
+    setShowModalLots(false);
   };
 
   const handleSuccessMessage = (message) => {
@@ -123,7 +123,7 @@ export function Produtos({ produtos, getProdutos }) {
               Categorias
             </button>
             {showModalCategoria && (
-              <ModalCategorias
+              <ModalCategory
                 onClose={closeModalCategoria}
                 categorias={categorias}
                 getCategorias={getCategorias}
@@ -133,12 +133,12 @@ export function Produtos({ produtos, getProdutos }) {
           </div>
 
           <div>
-            <button onClick={openNewProduto} className={styles.buttonFull}>
+            <button onClick={openModalAddProduct} className={styles.buttonFull}>
               Inserir Produto
             </button>
-            {showModalNewProduto && (
-              <NewProduto
-                onClose={closeModalNewProduto}
+            {showModalAddProduct && (
+              <ModalAddProduct
+                onClose={closeModalAddProduct}
                 categorias={categorias}
                 getProdutos={getProdutos}
               />
@@ -171,10 +171,10 @@ export function Produtos({ produtos, getProdutos }) {
                     className={styles.more}
                     onClick={() => openProduto(item)}
                   />
-                  {showModalProduto && produtoSelecionado && (
-                    <ModalProduto
+                  {showModalProduct && produtoSelecionado && (
+                    <ModalProduct
                       produto={produtoSelecionado}
-                      onClose={closeModalProduto}
+                      onClose={closeModalProduct}
                       categorias={categorias}
                       getProdutos={getProdutos}
                       onSuccess={handleSuccessMessage}
@@ -196,10 +196,10 @@ export function Produtos({ produtos, getProdutos }) {
                   {item.quantEstoque}
                 </td>
 
-                {showModalLotes && (
-                  <ModalLotes
+                {showModalLots && (
+                  <ModalLots
                     produto={produtoSelecionado}
-                    onClose={closeModalLotes}
+                    onClose={closeModalLots}
                     getProdutos={getProdutos}
                   />
                 )}
@@ -213,10 +213,10 @@ export function Produtos({ produtos, getProdutos }) {
                   >
                     {item.quantEstoque}
                   </button>
-                  {showModalLotes && (
-                    <ModalLotes
+                  {showModalLots && (
+                    <ModalLots
                       produto={produtoSelecionado}
-                      onClose={closeModalLotes}
+                      onClose={closeModalLots}
                       getProdutos={getProdutos}
                     />
                   )}

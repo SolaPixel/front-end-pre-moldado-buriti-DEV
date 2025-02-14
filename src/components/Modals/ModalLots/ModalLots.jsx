@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import styles from "./ModalLotes.module.css";
+import styles from "./ModalLots.module.css";
 import { PencilLine, PlusCircle, Trash, X, Check } from "phosphor-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { api } from "../lib/axios";
-import Input from "./Input/Input";
+import { api } from "../../../lib/axios";
 
-export function ModalLotes({ onClose, produto, getProdutos }) {
+export function ModalLots({ onClose, produto, getProdutos }) {
   const [lotes, setLotes] = useState([]);
 
   //requisição para api buscar produtos
@@ -176,9 +175,11 @@ export function ModalLotes({ onClose, produto, getProdutos }) {
             type="button"
             onClick={handleCreateLote}
           >
-            <PlusCircle size={20} /> Adicionar
+            <PlusCircle size={16} /> Adicionar
           </button>
         </div>
+
+        <div className={styles.line} />
 
         <div className={styles.lotes}>
           {lotes.length > 0 ? (

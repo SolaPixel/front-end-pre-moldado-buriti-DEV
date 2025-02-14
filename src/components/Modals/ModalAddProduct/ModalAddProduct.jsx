@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import styles from "./NewProduto.module.css";
+import styles from "./ModalAddProduct.module.css";
 import { ToastContainer, toast } from "react-toastify";
-import { api } from "../lib/axios";
+import { api } from "../../../lib/axios";
 import { X } from "phosphor-react";
 
-export function NewProduto({ onClose, categorias, getProdutos }) {
+export function ModalAddProduct({ onClose, categorias, getProdutos }) {
   const [formData, setFormData] = useState({
     numeracao: "",
     nome: "",
@@ -66,11 +66,15 @@ export function NewProduto({ onClose, categorias, getProdutos }) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
+        <h1>Novo Produto</h1>
+
+        <div className={styles.line} />
+
         <form onSubmit={handleCreateProduto}>
           <X onClick={handleClose} className={styles.closeButton} />
 
           <div className={styles.formRow}>
-            <div className={styles.smalldiv}>
+            <div className={styles.formGroup}>
               <label>Numeração:</label>
               <input
                 type="text"
@@ -158,8 +162,10 @@ export function NewProduto({ onClose, categorias, getProdutos }) {
             </div>
           </div>
 
-          <div className={styles.buttonContainer}>
-            <button type="submit">Cadastrar</button>
+          <div className={styles.buttonRow}>
+            <button className={styles.mainBtn} type="submit">
+              Cadastrar
+            </button>
           </div>
         </form>
       </div>

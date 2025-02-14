@@ -1,11 +1,11 @@
 import { useState } from "react";
-import styles from "./ModalCategorias.module.css";
+import styles from "./ModalCategory.module.css";
 import { PencilLine, PlusCircle, Trash, X, Check } from "phosphor-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { api } from "../lib/axios";
+import { api } from "../../../lib/axios";
 
-export function ModalCategorias({
+export function ModalCategory({
   onClose,
   getCategorias,
   categorias,

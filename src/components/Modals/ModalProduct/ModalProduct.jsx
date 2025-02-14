@@ -1,9 +1,10 @@
 import { useState } from "react";
-import styles from "./NewProduto.module.css";
+import styles from "../ModalProduct/ModalProduct.module.css";
 import { ToastContainer, toast } from "react-toastify";
-import { api } from "../lib/axios";
+import { api } from "../../../lib/axios";
+import { PencilLine, Trash, X, Check } from "phosphor-react";
 
-export function ModalProduto({
+export function ModalProduct({
   onClose,
   categorias,
   getProdutos,
@@ -90,13 +91,15 @@ export function ModalProduto({
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
+        <h1>Produto</h1>
+
+        <div className={styles.line} />
+
         <form>
-          <button onClick={handleClose} className={styles.closeButton}>
-            X
-          </button>
+          <X onClick={handleClose} className={styles.closeButton} />
 
           <div className={styles.formRow}>
-            <div className={styles.smalldiv}>
+            <div className={styles.formGroup}>
               <label>Numeração:</label>
               <input
                 type="text"
@@ -185,23 +188,34 @@ export function ModalProduto({
               />
             </div>
           </div>
-          <div className={styles.formGroup}>
-            <div className={styles.buttonContainer}>
-              {isEditing ? (
-                <button type="button" onClick={handleEditProduto}>
-                  Salvar
-                </button>
-              ) : (
-                <button type="button" onClick={() => handleActionEditProduto()}>
-                  Editar
-                </button>
-              )}
-            </div>
-            <div className={styles.buttonContainer}>
-              <button type="button" onClick={handleDeleteProduto}>
-                Excluir
+          <div className={styles.buttonRow}>
+            {isEditing ? (
+              <button
+                className={styles.saveBtn}
+                type="button"
+                onClick={handleEditProduto}
+              >
+                <Check size={16} />
+                Salvar
               </button>
-            </div>
+            ) : (
+              <button
+                className={styles.mainBtn}
+                type="button"
+                onClick={() => handleActionEditProduto()}
+              >
+                <PencilLine size={16} />
+                Editar
+              </button>
+            )}
+            <button
+              className={styles.deleteBtn}
+              type="button"
+              onClick={handleDeleteProduto}
+            >
+              <Trash size={16} />
+              Excluir
+            </button>
           </div>
         </form>
       </div>

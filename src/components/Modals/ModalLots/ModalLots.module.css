@@ -15,6 +15,7 @@
 .modal {
   max-height: calc(100vh * 0.9);
   min-height: calc(100vh * 0.9);
+  /* justify-content: space-between; */
   background: var(--bg-light-main);
   padding: 2rem;
   border-radius: 16px;
@@ -36,14 +37,15 @@
   }
 }
 
-.lotes {
-  border-top: 2px solid var(--gray-100);
-  padding-top: 1rem;
-}
-
 .modal h1 {
   margin-bottom: 1rem;
-  color: var(--gray-900);
+  color: var(--black);
+}
+
+.line {
+  width: 100%;
+  border-bottom: 3px solid var(--gray-100);
+  margin: 2rem 0px;
 }
 
 .formGroup {
@@ -63,15 +65,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
-  margin-bottom: 0.4rem;
-  padding: 1rem;
+  margin-top: 26px;
+  /* margin-bottom: 20px; */
+  padding: 12px;
   border: none;
-  border-radius: 5px; /* Suaviza as bordas */
-  background: transparent;
-  color: #333; /* Cor do ícone */
+  color: var(--white); /* Cor do ícone */
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Animação suave */
+  font-size: 1rem;
+  border-radius: 8px; /* Suaviza as bordas */
+  transition: background-color 0.2s ease; /* Animação suave */
 }
 
 .closeButton {
@@ -229,22 +231,6 @@ select:focus {
   margin-top: 1.4rem;
 }
 
-.overlay button[type="submit"] {
-  width: 20rem;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--brown-800);
-  border: none;
-  border-radius: 6px;
-  transition: background-color 0.3s;
-}
-
-.overlay button[type="submit"]:hover {
-  background: var(--bg-light-main);
-}
-
 .smalldiv {
   flex: 0 0 0%;
   display: flex;
@@ -267,17 +253,71 @@ select:focus {
   padding: 1rem 0;
 }
 
-.mainBtn:hover {
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Espaço entre os botões */
+  margin-top: 1rem;
+}
+
+.buttonRow button {
+  display: flex;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  gap: 4px;
+}
+
+.mainBtn {
   background-color: var(--main);
   color: var(--white);
 }
 
-.saveBtn:hover {
+.saveBtn {
   background-color: var(--green);
   color: var(--white);
 }
 
-.deleteBtn:hover {
+.deleteBtn {
   background: var(--red);
   color: var(--white);
+}
+
+.mainBtn:hover {
+  opacity: 60%;
+}
+
+.saveBtn:hover {
+  opacity: 60%;
+}
+
+.deleteBtn:hover {
+  opacity: 60%;
+}
+
+.formRow {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar linha caso fique apertado */
+  gap: 1rem; /* Espaço horizontal e vertical entre grupos */
+  margin-bottom: 1rem; /* Espaço extra abaixo do bloco de inputs */
+}
+
+.formGroup label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.formGroup input,
+.formGroup select {
+  font-size: 1rem;
+  padding: 10px;
+  border: 2px solid var(--gray-100);
+  border-radius: 4px;
+  box-sizing: border-box; /* Para incluir padding no width total */
+  width: 100%; /* Ajusta ao container */
+  background: transparent;
 }

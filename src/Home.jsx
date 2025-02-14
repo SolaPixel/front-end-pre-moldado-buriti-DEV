@@ -1,5 +1,5 @@
 // Componente Pai
-import { Produtos } from "./components/Produtos";
+import { PanelProduct } from "./components/Panels/PanelProduct/PanelProduct.jsx";
 import { Header } from "./components/Header";
 // import { Infoprofile } from "./components/Infoprofile";
 // import { Sidebar } from "./components/Sidebar";
@@ -44,7 +44,7 @@ export function Home() {
           </main>
         </div> */}
 
-        <Produtos //tabela de produtos
+        <PanelProduct //tabela de produtos
           produtos={produtos}
           getProdutos={getProdutos}
         />
