@@ -4,9 +4,12 @@ import { PencilLine, PlusCircle, Trash, X, Check } from "phosphor-react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { api } from "../../../lib/axios";
+import { toDate } from "date-fns";
 
 export function ModalLots({ onClose, produto, getProdutos }) {
   const [lotes, setLotes] = useState([]);
+
+  console.log(lotes)
 
   //requisição para api buscar produtos
   async function getLotes() {
@@ -107,6 +110,16 @@ export function ModalLots({ onClose, produto, getProdutos }) {
     getProdutos(); // Atualiza a lista de produtos
     onClose();
   };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return ""; // Retorna vazio se não houver data
+    
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ""; // Retorna vazio se a data for inválida
+  
+    return date.toISOString().split("T")[0]; // Converte para 'YYYY-MM-DD'
+  };
+  
 
   return (
     <div className={styles.overlay}>
@@ -223,8 +236,8 @@ export function ModalLots({ onClose, produto, getProdutos }) {
                     type="date"
                     value={
                       loteEditId === item.id
-                        ? loteEdit.dataAquisicao
-                        : item.dataAquisicao
+                        ? formatDate(loteEdit.dataAquisicao)
+                        : formatDate(item.dataAquisicao)
                     }
                     onChange={(e) =>
                       setLoteEdit({
@@ -257,7 +270,7 @@ export function ModalLots({ onClose, produto, getProdutos }) {
                   <input
                     type="date"
                     value={
-                      loteEditId === item.id ? loteEdit.validade : item.validade
+                      loteEditId === item.id ? formatDate(loteEdit.validade) : formatDate(item.validade)
                     }
                     onChange={(e) =>
                       setLoteEdit({ ...loteEdit, validade: e.target.value })
