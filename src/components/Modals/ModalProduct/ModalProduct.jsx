@@ -3,6 +3,7 @@ import styles from "../ModalProduct/ModalProduct.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import { api } from "../../../lib/axios";
 import { PencilLine, Trash, X, Check } from "phosphor-react";
+import CurrencyInput from "react-currency-input-field";
 
 export function ModalProduct({
   onClose,
@@ -169,21 +170,26 @@ export function ModalProduct({
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label>Preço unitário:</label>
-              <input
-                type="number"
-                name="valorVarejo"
+              <CurrencyInput
+                prefix="R$ "
+                decimalSeparator="."
+                groupSeparator=" "
+                decimalsLimit={2}
                 value={formData.valorVarejo}
-                onChange={handleChange}
+                onValueChange={(value) => handleChange({ target: { name: "valorVarejo", value } })}
                 disabled={!isEditing}
               />
+            
             </div>
             <div className={styles.formGroup}>
               <label>Preço uni. atacado:</label>
-              <input
-                type="number"
-                name="valorAtacado"
+              <CurrencyInput
+                prefix="R$ "
+                decimalSeparator="."
+                groupSeparator=" "
+                decimalsLimit={2}
                 value={formData.valorAtacado}
-                onChange={handleChange}
+                onValueChange={(value) => handleChange({ target: { name: "valorAtacado", value } })}
                 disabled={!isEditing}
               />
             </div>

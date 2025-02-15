@@ -193,6 +193,7 @@ export function PanelProduct({ produtos, getProdutos }) {
                 <td>{parseFloat(item.valorAtacado).toFixed(2)} R$</td>
                 {/* teste */}
                 <td
+                
                   className={styles.clickable}
                   onClick={() => openLotes(item)}
                 >

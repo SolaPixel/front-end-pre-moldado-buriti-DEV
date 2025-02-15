@@ -171,6 +171,10 @@ th {
   }
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .clickable:hover {
   text-decoration: underline;
   color: var(--main);

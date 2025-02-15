@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { api } from "../../../lib/axios";
 import { X } from "phosphor-react";
 
+import CurrencyInput from 'react-currency-input-field';
+
 export function ModalAddProduct({ onClose, categorias, getProdutos }) {
   const [formData, setFormData] = useState({
     numeracao: "",
@@ -142,22 +144,24 @@ export function ModalAddProduct({ onClose, categorias, getProdutos }) {
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label>Preço unitário:</label>
-              <input
-                type="number"
-                name="valorVarejo"
+              <CurrencyInput
+                prefix="R$ "
+                decimalSeparator="."
+                groupSeparator=" "
+                decimalsLimit={2}
                 value={formData.valorVarejo}
-                onChange={handleChange}
-                required
+                onValueChange={(value) => handleChange({ target: { name: "valorVarejo", value } })}
               />
             </div>
             <div className={styles.formGroup}>
               <label>Preço uni. atacado:</label>
-              <input
-                type="number"
-                name="valorAtacado"
+              <CurrencyInput
+                prefix="R$ "
+                decimalSeparator="."
+                groupSeparator=" "
+                decimalsLimit={2}
                 value={formData.valorAtacado}
-                onChange={handleChange}
-                required
+                onValueChange={(value) => handleChange({ target: { name: "valorAtacado", value } })}
               />
             </div>
           </div>

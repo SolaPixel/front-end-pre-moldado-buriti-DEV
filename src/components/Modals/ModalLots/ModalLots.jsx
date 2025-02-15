@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { api } from "../../../lib/axios";
 import { toDate } from "date-fns";
+import CurrencyInput from "react-currency-input-field";
 
 export function ModalLots({ onClose, produto, getProdutos }) {
   const [lotes, setLotes] = useState([]);
@@ -115,13 +116,13 @@ export function ModalLots({ onClose, produto, getProdutos }) {
 
   const formatDate = (dateString) => {
     if (!dateString) return ""; // Retorna vazio se não houver data
-    
+
     const date = new Date(dateString);
     if (isNaN(date.getTime())) return ""; // Retorna vazio se a data for inválida
-  
+
     return date.toISOString().split("T")[0]; // Converte para 'YYYY-MM-DD'
   };
-  
+
 
   return (
     <div className={styles.overlay}>
@@ -154,13 +155,17 @@ export function ModalLots({ onClose, produto, getProdutos }) {
 
           <div className={styles.formGroup}>
             <label>Valor investido</label>
-            <input
-              type="number"
+            <CurrencyInput
               value={lote.valorGasto}
-              onChange={(e) =>
-                setLote((prev) => ({ ...prev, valorGasto: e.target.value }))
+              prefix="R$ "
+              decimalSeparator="."
+              groupSeparator=" "
+              decimalsLimit={2}
+              onValueChange={(value) =>
+                setLote((prev) => ({ ...prev, valorGasto: value }))
               }
             />
+
           </div>
 
           <div className={styles.formGroup}>
@@ -253,16 +258,17 @@ export function ModalLots({ onClose, produto, getProdutos }) {
 
                 <div className={styles.formGroup}>
                   <label>Valor investido</label>
-                  <input
-                    type="number"
-                    value={
-                      loteEditId === item.id
-                        ? loteEdit.valorGasto
-                        : item.valorGasto
-                    }
-                    onChange={(e) =>
-                      setLoteEdit({ ...loteEdit, valorGasto: e.target.value })
-                    }
+                  <CurrencyInput
+                    value={loteEditId === item.id ? loteEdit.valorGasto : item.valorGasto}
+                    prefix="R$ "
+                    decimalSeparator="."
+                    groupSeparator=" "
+                    decimalsLimit={2}
+                    onValueChange={(value) => {
+                      if (loteEditId === item.id) {
+                        setLoteEdit((prev) => ({ ...prev, valorGasto: value }));
+                      }
+                    }}
                     disabled={loteEditId !== item.id}
                   />
                 </div>
