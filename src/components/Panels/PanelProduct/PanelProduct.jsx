@@ -189,9 +189,8 @@ export function PanelProduct({ produtos, getProdutos }) {
                 <td>{item.nome}</td>
                 <td>{item.categoria?.nome || "--"} </td>
                 <td>{item.unidadeMedida}</td>
-                <td>{item.valorVarejo}</td>
-                <td>{item.valorAtacado}</td>
-
+                <td>{parseFloat(item.valorVarejo).toFixed(2)} R$</td>
+                <td>{parseFloat(item.valorAtacado).toFixed(2)} R$</td>
                 {/* teste */}
                 <td
                   className={styles.clickable}
