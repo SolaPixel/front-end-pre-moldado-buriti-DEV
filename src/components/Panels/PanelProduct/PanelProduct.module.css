@@ -17,6 +17,7 @@
   display: flex;
   /* flex: 1; */
   padding: 0.5rem 1rem;
+  background: transparent;
   border: 2px solid var(--gray-100);
   border-radius: 8px;
   /* margin: 0 1rem; */
@@ -30,6 +31,7 @@
   width: 100%;
   flex: 1;
   border: none;
+  background: transparent;
   margin-left: 1rem;
 }
 
@@ -104,9 +106,8 @@
 }
 
 .more:hover {
-  background: var(--gray-100);
+  color: var(--main);
   cursor: pointer;
-  opacity: 70%;
 }
 
 .avatar {
@@ -128,7 +129,8 @@ table {
 
 th,
 td {
-  border: 2px solid var(--gray-100);
+  /* border-top: 2px solid var(--gray-100); */
+  border-bottom: 2px solid var(--gray-100);
 }
 
 th {
@@ -169,16 +171,9 @@ th {
   }
 }
 
-.clickable {
-  cursor: pointer;
-  text-align: center;
-  padding: 10px;
-  transition: border 0.2s ease-in-out;
-  border: 2px solid var(--gray-100);
-}
-
 .clickable:hover {
-  border-color: var(--main);
+  text-decoration: underline;
+  color: var(--main);
 }
 
 .situation {

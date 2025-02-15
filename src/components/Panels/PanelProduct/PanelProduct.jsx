@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { DotsThreeVertical, MagnifyingGlass } from "phosphor-react";
+import {
+  DotsThreeVertical,
+  MagnifyingGlass,
+  PencilSimple,
+} from "phosphor-react";
 
 import styles from "./PanelProduct.module.css";
 import { api } from "../../../lib/axios.js";
@@ -194,6 +198,8 @@ export function PanelProduct({ produtos, getProdutos }) {
                   onClick={() => openLotes(item)}
                 >
                   {item.quantEstoque}
+
+                  <PencilSimple size={16} />
                 </td>
 
                 {showModalLots && (
